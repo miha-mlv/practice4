@@ -14,15 +14,43 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private FragmentManager manager;
     private FragmentTransaction fragmentTransaction;
+    FirstFragment fragment1;
+    SecondFragment fragment2;
+    ThirdFragment fragment3;
+    private Button button_1, button_2, button_3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         manager = getSupportFragmentManager();
-        FirstFragment fragment1 = new FirstFragment();
-        fragmentTransaction = manager.beginTransaction();
-        fragmentTransaction.replace(R.id.container, fragment1, "fragment1");
-        fragmentTransaction.commit();
+        fragment1 = new FirstFragment();
+        fragment2 = new SecondFragment();
+        fragment3 = new ThirdFragment();
+        button_1 = findViewById(R.id.button_1);
+        button_2 = findViewById(R.id.button_2);
+        button_3 = findViewById(R.id.button_3);
+
+        button_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentTransaction = manager.beginTransaction();
+                fragmentTransaction.replace(R.id.container, fragment1, "fragment1").commit();
+            }
+        });
+        button_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentTransaction = manager.beginTransaction();
+                fragmentTransaction.replace(R.id.container, fragment2, "fragment2").commit();
+            }
+        });
+        button_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentTransaction = manager.beginTransaction();
+                fragmentTransaction.replace(R.id.container, fragment3, "fragment3").commit();
+            }
+        });
 
 //        manager = getSupportFragmentManager();
 //        fragmentTransaction = manager.beginTransaction();
